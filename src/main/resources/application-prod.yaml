@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: personal-finance-tracker-api
+
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    url: ${DATABASE_URL}
+    hikari:
+      maximum-pool-size: 5
+      minimum-idle: 2
+      connection-timeout: 30000
+      idle-timeout: 600000
+
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        format_sql: false
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          batch_size: 20
+        order_inserts: true
+        order_updates: true
+
+  mvc:
+    problemdetails:
+      enabled: true
+
+  flyway:
+    enabled: false
+
+logging:
+  level:
+    org:
+      springdoc: WARN
+    org.springframework.web: WARN
+    com.example.personal_finance_tracker_api: INFO
+
+security:
+  jwt:
+    secret-key: ${JWT_SECRET}
+    expiration: 3600000
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: true
+  show-actuator: true
+
+server:
+  port: ${PORT:8080}
+  error:
+    include-message: always
+    include-binding-errors: always

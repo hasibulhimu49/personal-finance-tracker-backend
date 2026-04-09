@@ -53,7 +53,10 @@ public class SecurityConfig {
 
                         .requestMatchers("/actuator/health").permitAll()
                         .requestMatchers("/").permitAll()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6fed8c57b8661255c2599f0fa2e5b970bc18520d
                         //Swagger and OpenAPI - exact paths only at start or end
                         .requestMatchers(
                                 "/swagger-ui/**",

@@ -51,6 +51,8 @@ public class SecurityConfig {
         http.csrf((csrf)->csrf.disable())
                 .authorizeHttpRequests((auth)->auth
 
+                        .requestMatchers("/actuator/health").permitAll()
+                        .requestMatchers("/").permitAll()
                         //Swagger and OpenAPI - exact paths only at start or end
                         .requestMatchers(
                                 "/swagger-ui/**",

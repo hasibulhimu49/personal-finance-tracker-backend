@@ -85,28 +85,39 @@ This project follows a layered architecture ensuring separation of concerns:
 
 Client → Controller → Service → Repository → Database  
 
-.............
+---
+
+## 🗄️ ER Diagram (Initial Basic)
+
+![ER Diagram](./docs/diagrams/ER-FinanceTracker.drawio.png) 
 
 ---
 
-## 📊 Diagrams
+## 🔄 Use Case Diagram (Initial Basic)
 
-- 🧠 System Architecture Diagram  
-- 🔄 Use Case Diagram  
-- 🗄️ ER Diagram  
-
-.............
+<p align="left">
+  <img src="./docs/diagrams/UseCase-FinanceTracker.jpg" width="550"/>
+</p>
 
 ---
 
 ## 🗄️ Database Design
 
-### Main Entities:
-- User  
-- Transaction  
-- Category  
+The database is designed to efficiently manage user financial data with proper relationships and normalization.
 
-Each transaction is associated with a user and a category for structured financial tracking.
+### Main Entities
+
+- **User**  
+  Stores user authentication and profile information.
+
+- **Transaction**  
+  Represents income and expense records, including amount, type, and date.
+
+### Relationships
+
+- A **User** can have multiple **Transactions** (One-to-Many)  
+
+This design ensures data integrity, scalability, and efficient querying for financial reports.
 
 ---
 

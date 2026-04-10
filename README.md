@@ -1,124 +1,235 @@
-# 🏦 Personal Finance Tracker - Backend API
+# Personal Finance Tracker API (Backend)
 
-[![Java](https://img.shields.io/badge/Java-17-007396?logo=java)](https://openjdk.org/)
-[![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.1.5-6DB33F?logo=spring-boot)](https://spring.io/projects/spring-boot)
-[![Spring Security](https://img.shields.io/badge/Spring_Security-6.1.5-6DB33F?logo=spring-security)](https://spring.io/projects/spring-security)
-[![JWT](https://img.shields.io/badge/JWT-Auth-000000?logo=json-web-tokens)](https://jwt.io/)
-[![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?logo=postgresql)](https://www.postgresql.org/)
-[![Flyway](https://img.shields.io/badge/Flyway-9.22.0-CC0000?logo=flyway)](https://flywaydb.org/)
-[![Swagger](https://img.shields.io/badge/Swagger-OpenAPI-85EA2D?logo=swagger)](https://swagger.io/)
-[![JUnit](https://img.shields.io/badge/JUnit-5.10.0-25A162?logo=junit5)](https://junit.org/junit5/)
-[![Render](https://img.shields.io/badge/Deployed_on-Render-46E3B7?logo=render)](https://render.com)
+A secure, scalable, and production-ready RESTful API built with Spring Boot for managing personal finances, including income, expenses, and financial reports.
 
-> A robust, production-ready REST API for personal finance management with comprehensive security, documentation, and testing.
+---
 
-## 📋 Table of Contents
+## 🌐 Live API
 
-- [Features](#-features)
-- [Architecture](#-architecture)
-- [Tech Stack](#-tech-stack)
-- [Getting Started](#-getting-started)
-- [API Documentation](#-api-documentation)
-- [Database Schema](#-database-schema)
-- [Security](#-security)
-- [Error Handling](#-error-handling)
-- [Testing](#-testing)
-- [Deployment](#-deployment)
-- [Performance](#-performance)
-- [Monitoring](#-monitoring)
-- [Contributing](#-contributing)
-- [License](#-license)
+**Base URL:**  
+👉 https://personal-finance-tracker-backend-brs4.onrender.com
+
+---
+
+## 📚 API Documentation
+
+[![Swagger UI](https://img.shields.io/badge/Swagger-UI-brightgreen)](https://personal-finance-tracker-backend-brs4.onrender.com/swagger-ui/index.html)
+
+- 🔗 **Swagger UI:**  
+  https://personal-finance-tracker-backend-brs4.onrender.com/swagger-ui/index.html  
+- 📄 **OpenAPI JSON:**  
+  https://personal-finance-tracker-backend-brs4.onrender.com/v3/api-docs  
+
+---
+
+## 🚀 Quick Links
+
+| Type           | Link                                                                 |
+|----------------|----------------------------------------------------------------------|
+| API Root       | https://personal-finance-tracker-backend-brs4.onrender.com           |
+| Health Check   | https://personal-finance-tracker-backend-brs4.onrender.com/actuator/health |
+
+---
+
+## 🔗 Frontend Repository
+
+👉 https://github.com/hasibulhimu49/personal-finance-tracker-frontend  
+
+---
+---
+
+## 📌 Overview
+
+This backend system enables users to track financial activities, categorize transactions, and generate insightful reports.  
+It follows clean architecture principles with a focus on scalability, maintainability, and security using JWT-based authentication.
+
+---
 
 ## ✨ Features
 
-### 🚀 Core Features
-- **User Authentication & Authorization**
-  - JWT-based authentication
-  - Role-based access control (USER/ADMIN)
-  - Secure password encryption (BCrypt)
-  - Token validation and refresh
+- 🔐 JWT Authentication & Authorization  
+- 👤 User Registration & Login  
+- 💸 Income & Expense Management  
+- 🗂️ Category-based Transactions  
+- 📊 Monthly Financial Reports  
+- ✅ Input Validation & Global Exception Handling  
 
-- **Transaction Management**
-  - Create, read, update, delete transactions
-  - Income/Expense categorization
-  - Date-based filtering
-  - Monthly financial reports
-
-- **Advanced Features**
-  - Swagger/OpenAPI documentation
-  - Global exception handling
-  - Request/Response DTOs
-  - Service interface for loose coupling
-  - Flyway database migrations
-  - Multi-profile configuration (dev/prod)
-
-### 🔒 Security Features
-- JWT token-based authentication
-- Password encryption with BCrypt
-- Role-based method security (@PreAuthorize)
-- CSRF protection (disabled for REST APIs)
-- CORS configuration
-- SQL injection prevention via JPA
-- XSS protection
-
-### 📊 API Features
-- RESTful API design
-- DTO pattern for data transfer
-- Pagination support
-- Sorting and filtering
-- Validation annotations
-- Custom exception handling
-- Global error responses
-
+---
 
 ## 🛠️ Tech Stack
 
-### Core Framework
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Java | 17 | Programming Language |
-| Spring Boot | 3.1.5 | Application Framework |
-| Spring Security | 6.1.5 | Authentication & Authorization |
-| Spring Data JPA | 3.1.5 | Database Access |
-| Hibernate | 6.2.13 | ORM Framework |
+- **Backend:** Java 21, Spring Boot 3  
+- **Security:** Spring Security, JWT  
+- **Database:** PostgreSQL (Neon)  
+- **Build Tool:** Gradle  
+- **API Docs:** Swagger (OpenAPI 3)  
+- **Testing:** Postman  
 
-### Database & Migration
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| PostgreSQL | 15 | Production Database |
-| H2 Database | 2.2.220 | Development Database |
-| Flyway | 9.22.0 | Database Migration |
+---
 
-### Security & Utilities
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| JJWT | 0.11.5 | JWT Token Management |
-| BCrypt | - | Password Encryption |
-| Lombok | 1.18.30 | Boilerplate Reduction |
-| ModelMapper | 3.1.1 | DTO Mapping |
+## 🧩 Engineering Best Practices
 
-### Documentation & Testing
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| SpringDoc OpenAPI | 2.2.0 | API Documentation (Swagger) |
-| JUnit 5 | 5.10.0 | Unit Testing |
-| Mockito | 5.5.0 | Mocking Framework |
-| TestContainers | 1.19.0 | Integration Testing |
-| Spring Boot Test | 3.1.5 | Integration Testing |
+- ✅ DTO Pattern & Mapper Layer (MapStruct)  
+- ✅ Service Interface (Loose Coupling)  
+- ✅ Layered Architecture (Clean Code)  
+- ✅ Environment-based Profiles (Dev/Prod)  
+- ✅ Database Migration using Flyway  
+- ✅ Structured Logging  
+- ✅ Global Exception Handling  
 
-### Build & Deployment
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Maven | 3.9.0 | Build Automation |
-| Docker | - | Containerization |
-| Render | - | Cloud Deployment |
-| GitHub Actions | - | CI/CD Pipeline |
+---
 
-## 🚀 Getting Started
+## 🧠 System Architecture
+
+This project follows a layered architecture ensuring separation of concerns:
+
+Client → Controller → Service → Repository → Database  
+
+.............
+
+---
+
+## 📊 Diagrams
+
+- 🧠 System Architecture Diagram  
+- 🔄 Use Case Diagram  
+- 🗄️ ER Diagram  
+
+.............
+
+---
+
+## 🗄️ Database Design
+
+### Main Entities:
+- User  
+- Transaction  
+- Category  
+
+Each transaction is associated with a user and a category for structured financial tracking.
+
+---
+
+## 🔗 API Endpoints
+
+### 🔐 Authentication API (`/api/v1/auth`)
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|------------|------|
+| POST | /register | Register new user | ❌ |
+| POST | /login | Login & receive JWT | ❌ |
+| POST | /logout | Logout user | ✅ |
+
+---
+
+### 👥 User Management (`/api/v1/users`)
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|------------|------|
+| GET | / | Get all users (ADMIN) | ✅ |
+| POST | / | Create user (ADMIN) | ✅ |
+| GET | /{id} | Get user by ID | ✅ |
+| DELETE | /{id} | Delete user (ADMIN) | ✅ |
+
+---
+
+### 💰 Transactions (`/api/v1/transactions`)
+
+| Method | Endpoint | Description | Auth |
+|--------|----------|------------|------|
+| GET | / | Get all transactions | ✅ |
+| POST | / | Create transaction | ✅ |
+| GET | /{id} | Get transaction by ID | ✅ |
+| PUT | /{id} | Update transaction | ✅ |
+| DELETE | /{id} | Delete transaction | ✅ |
+
+---
+
+### 📊 Reports
+
+| Method | Endpoint | Description |
+|--------|----------|------------|
+| GET | /reports/monthly?month={month}&year={year} | Monthly income/expense report |
+
+📌 Example:  
+`/api/v1/transactions/reports/monthly?month=4&year=2026`
+
+---
+
+### 🏠 System Endpoints
+
+| Endpoint | Description |
+|----------|------------|
+| `/swagger-ui/index.html` | API documentation |
+| `/v3/api-docs` | OpenAPI JSON |
+| `/actuator/health` | Health check |
+
+---
+
+## 🔑 Authorization
+
+For secured endpoints, include JWT token in header:
+- Authorization: Bearer <your_jwt_token>
+
+---
+
+## 🔐 Authentication & Security
+
+- JWT-based authentication  
+- Stateless session management  
+- Secure endpoints with Spring Security  
+- Role-based access control  
+
+---
+
+## ⚙️ Setup Instructions
 
 ### Prerequisites
-- JDK 17 or higher
-- Maven 3.9+
-- PostgreSQL 15+ (for production)
-- Git
-- Docker (optional)
+
+- Java 17+  
+- Gradle  
+- PostgreSQL  
+
+### Steps
+
+1. Clone the repository:
+git clone https://github.com/hasibulhimu49/finance-tracker-backend.git
+
+3. Configure database in `application.yaml`
+
+4. Run the project:
+   ./gradlew bootRun
+
+
+---
+
+## 🚀 Deployment
+
+- **Backend:** Render  
+- **Database:** Neon (PostgreSQL)  
+
+---
+
+## 🚀 Future Improvements
+
+- 📊 Budget Planning Feature  
+- 📄 Export Reports (PDF/Excel)  
+- ⚡ Redis Caching  
+
+---
+
+## 👨‍💻 Author
+
+**Mohammad Hasibul Hasan**  
+Java Backend Developer  
+
+- 🔗 LinkedIn: https://www.linkedin.com/in/hasibulhimu49/  
+- 💻 GitHub: https://github.com/hasibulhimu49  
+- 🌐 Portfolio: https://hasibul-dev-portfolio.vercel.app/  
+
+---
+
+## ⭐ Support
+
+If you like this project, consider giving it a ⭐ on GitHub!
+

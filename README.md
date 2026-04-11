@@ -5,42 +5,32 @@ A secure, scalable, and production-ready RESTful API built with Spring Boot for 
 ---
 
 ## 🌐 Live API
-
-**Base URL:**  
-👉 https://personal-finance-tracker-backend-brs4.onrender.com
+Base URL:  
+👉 https://personal-finance-tracker-backend-brs4.onrender.com  
 
 ---
 
 ## 📚 API Documentation
-
-[![Swagger UI](https://img.shields.io/badge/Swagger-UI-brightgreen)](https://personal-finance-tracker-backend-brs4.onrender.com/swagger-ui/index.html)
-
-- 🔗 **Swagger UI:**  
+- 🔗 Swagger UI:  
   https://personal-finance-tracker-backend-brs4.onrender.com/swagger-ui/index.html  
-- 📄 **OpenAPI JSON:**  
+
+- 📄 OpenAPI JSON:  
   https://personal-finance-tracker-backend-brs4.onrender.com/v3/api-docs  
 
 ---
 
-## 🚀 Quick Links
-
-| Type           | Link                                                                 |
-|----------------|----------------------------------------------------------------------|
-| API Root       | https://personal-finance-tracker-backend-brs4.onrender.com           |
-| Health Check   | https://personal-finance-tracker-backend-brs4.onrender.com/actuator/health |
+## 🛠️ Monitoring & Health
+- ❤️ Health Check:  
+  https://personal-finance-tracker-backend-brs4.onrender.com/actuator/health  
 
 ---
 
-## 🔗 Frontend 
+## 🔗 Frontend
+- 🌐 Live App:  
+  https://personal-finance-tracker-frontend-ivory.vercel.app/welcome  
 
-**Base URL:**  
-👉 https://personal-finance-tracker-frontend-ivory.vercel.app/welcome
-
-**Repository:**
-
- - https://github.com/hasibulhimu49/personal-finance-tracker-frontend  
-
----
+- 📂 Repository:  
+  https://github.com/hasibulhimu49/personal-finance-tracker-frontend  
 ---
 
 ## 📌 Overview

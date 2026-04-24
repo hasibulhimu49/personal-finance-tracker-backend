@@ -6,6 +6,7 @@ import com.example.personal_finance_tracker_api.auth.dto.response.AuthResponse;
 import com.example.personal_finance_tracker_api.auth.dto.response.RegisterResponse;
 import com.example.personal_finance_tracker_api.auth.mapper.RegisterMapper;
 import com.example.personal_finance_tracker_api.auth.service.AuthService;
+import com.example.personal_finance_tracker_api.category.service.CategoryService;
 import com.example.personal_finance_tracker_api.common.enums.Role;
 import com.example.personal_finance_tracker_api.security.UserPrincipal;
 import com.example.personal_finance_tracker_api.security.JwtService;
@@ -24,6 +25,7 @@ public class AuthServiceImpl implements AuthService {
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
+    private final CategoryService categoryService;
 
 
 
@@ -33,6 +35,9 @@ public class AuthServiceImpl implements AuthService {
         user.setPassword(passwordEncoder.encode(request.getPassword()));
         user.setRole(Role.USER);
         User saved=repository.save(user);
+        
+        categoryService.seedDefaultCategories(saved);
+        
         return mapper.toDto(saved);
 
     }

@@ -9,11 +9,13 @@ import lombok.Setter;
 
 import java.time.LocalDate;
 
+import com.example.personal_finance_tracker_api.common.audit.BaseEntity;
+
 @Entity
 @Table(name = "Transaction_Table")
 @Getter
 @Setter
-public class Transaction {
+public class Transaction extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,7 +24,9 @@ public class Transaction {
     @Column(name = "Amount")
     private Double amount;
 
-    private String category;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+    private com.example.personal_finance_tracker_api.category.entity.Category category;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
@@ -32,4 +36,8 @@ public class Transaction {
     @Schema(type = "string", format = "date", example = "31/03/2026")
     @Column(name = "transaction_date")
     private LocalDate localDate;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private com.example.personal_finance_tracker_api.user.entity.User user;
 }

@@ -1,23 +1,29 @@
 package com.example.personal_finance_tracker_api.transaction.service;
 
-import com.example.personal_finance_tracker_api.transaction.entity.Transaction;
+import com.example.personal_finance_tracker_api.transaction.dto.request.TransactionRequestDto;
+import com.example.personal_finance_tracker_api.transaction.dto.response.MonthlyReportDto;
+import com.example.personal_finance_tracker_api.transaction.dto.response.TransactionResponseDto;
+import com.example.personal_finance_tracker_api.common.enums.Type;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
 
 @Service
 public interface TransactionService {
 
-    public Transaction createTransaction(Transaction transaction);
+    TransactionResponseDto createTransaction(TransactionRequestDto requestDto);
 
-    public List<Transaction> getAllTransaction();
+    Page<TransactionResponseDto> getAllTransaction(LocalDate startDate, LocalDate endDate, Long categoryId, Type type, Pageable pageable);
 
-    public Transaction getTransactionById(Long id);
+    String exportTransactionsToCsv(LocalDate startDate, LocalDate endDate, Long categoryId, Type type);
 
-    public Transaction updateTransaction(Long id, Transaction updateTrans);
+    TransactionResponseDto getTransactionById(Long id);
 
-    public Void deleteTransaction(Long id);
+    TransactionResponseDto updateTransaction(Long id, TransactionRequestDto updateTrans);
 
-    public Map<String, Object> getMonthlyReport(int month, int year);
+    Void deleteTransaction(Long id);
+
+    MonthlyReportDto getMonthlyReport(int month, int year);
 }

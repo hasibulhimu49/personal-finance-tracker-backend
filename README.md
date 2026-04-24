@@ -5,37 +5,32 @@ A secure, scalable, and production-ready RESTful API built with Spring Boot for 
 ---
 
 ## 🌐 Live API
-
-**Base URL:**  
-👉 https://personal-finance-tracker-backend-brs4.onrender.com
+Base URL:  
+👉 https://personal-finance-tracker-backend-brs4.onrender.com  
 
 ---
 
 ## 📚 API Documentation
-
-[![Swagger UI](https://img.shields.io/badge/Swagger-UI-brightgreen)](https://personal-finance-tracker-backend-brs4.onrender.com/swagger-ui/index.html)
-
-- 🔗 **Swagger UI:**  
+- 🔗 Swagger UI:  
   https://personal-finance-tracker-backend-brs4.onrender.com/swagger-ui/index.html  
-- 📄 **OpenAPI JSON:**  
+
+- 📄 OpenAPI JSON:  
   https://personal-finance-tracker-backend-brs4.onrender.com/v3/api-docs  
 
 ---
 
-## 🚀 Quick Links
-
-| Type           | Link                                                                 |
-|----------------|----------------------------------------------------------------------|
-| API Root       | https://personal-finance-tracker-backend-brs4.onrender.com           |
-| Health Check   | https://personal-finance-tracker-backend-brs4.onrender.com/actuator/health |
+## 🛠️ Monitoring & Health
+- ❤️ Health Check:  
+  https://personal-finance-tracker-backend-brs4.onrender.com/actuator/health  
 
 ---
 
-## 🔗 Frontend Repository
+## 🔗 Frontend
+- 🌐 Live App:  
+  https://personal-finance-tracker-frontend-ivory.vercel.app/welcome  
 
-👉 https://github.com/hasibulhimu49/personal-finance-tracker-frontend  
-
----
+- 📂 Repository:  
+  https://github.com/hasibulhimu49/personal-finance-tracker-frontend  
 ---
 
 ## 📌 Overview
@@ -85,28 +80,39 @@ This project follows a layered architecture ensuring separation of concerns:
 
 Client → Controller → Service → Repository → Database  
 
-.............
+---
+
+## 🗄️ ER Diagram (Initial Basic)
+
+![ER Diagram](./docs/diagrams/ER-FinanceTracker.drawio.png) 
 
 ---
 
-## 📊 Diagrams
+## 🔄 Use Case Diagram (Initial Basic)
 
-- 🧠 System Architecture Diagram  
-- 🔄 Use Case Diagram  
-- 🗄️ ER Diagram  
-
-.............
+<p align="left">
+  <img src="./docs/diagrams/UseCase-FinanceTracker.jpg" width="550"/>
+</p>
 
 ---
 
 ## 🗄️ Database Design
 
-### Main Entities:
-- User  
-- Transaction  
-- Category  
+The database is designed to efficiently manage user financial data with proper relationships and normalization.
 
-Each transaction is associated with a user and a category for structured financial tracking.
+### Main Entities
+
+- **User**  
+  Stores user authentication and profile information.
+
+- **Transaction**  
+  Represents income and expense records, including amount, type, and date.
+
+### Relationships
+
+- A **User** can have multiple **Transactions** (One-to-Many)  
+
+This design ensures data integrity, scalability, and efficient querying for financial reports.
 
 ---
 

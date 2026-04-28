@@ -8,29 +8,37 @@ import java.time.LocalDate;
 
 public class TransactionSpecification {
 
-    public static Specification<Transaction> getTransactionsByFilters(Long userId, LocalDate startDate, LocalDate endDate, Long categoryId, Type type) {
-        return (root, query, cb) -> {
-            Specification<Transaction> spec = Specification.where(hasUserId(userId));
+    public static Specification<Transaction> getTransactionsByFilters(
+            Long userId,
+            LocalDate startDate,
+            LocalDate endDate,
+            Long categoryId,
+            Type type
+    ) {
+        Specification<Transaction> spec = hasUserId(userId);
 
-            if (startDate != null && endDate != null) {
-                spec = spec.and(hasDateBetween(startDate, endDate));
-            } else if (startDate != null) {
-                spec = spec.and(hasDateAfterOrEqual(startDate));
-            } else if (endDate != null) {
-                spec = spec.and(hasDateBeforeOrEqual(endDate));
-            }
+        if (startDate != null && endDate != null) {
+            spec = spec.and(hasDateBetween(startDate, endDate));
+        } else if (startDate != null) {
+            spec = spec.and(hasDateAfterOrEqual(startDate));
+        } else if (endDate != null) {
+            spec = spec.and(hasDateBeforeOrEqual(endDate));
+        }
 
-            if (categoryId != null) {
-                spec = spec.and(hasCategoryId(categoryId));
-            }
+        if (categoryId != null) {
+            spec = spec.and(hasCategoryId(categoryId));
+        }
 
-            if (type != null) {
-                spec = spec.and(hasType(type));
-            }
+        if (type != null) {
+            spec = spec.and(hasType(type));
+        }
 
-            return spec.toPredicate(root, query, cb);
-        };
+        return spec;
     }
+
+
+
+
 
     private static Specification<Transaction> hasUserId(Long userId) {
         return (root, query, cb) -> cb.equal(root.get("user").get("id"), userId);

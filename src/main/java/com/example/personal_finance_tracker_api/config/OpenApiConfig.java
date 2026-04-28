@@ -4,42 +4,51 @@ import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.License;
+
+// 👉 ADD THESE IMPORTS
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import io.swagger.v3.oas.models.security.SecurityScheme;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class OpenApiConfig {
+
     @Bean
-    public OpenAPI openAPI(){
-        OpenAPI openAPI = new OpenAPI();
-        openAPI.setInfo(apiInfo());
-        return openAPI;
+    public OpenAPI openAPI() {
+        return new OpenAPI()
+                .info(apiInfo())
+
+                .components(new Components()
+                        .addSecuritySchemes("bearerAuth",
+                                new SecurityScheme()
+                                        .type(SecurityScheme.Type.HTTP)
+                                        .scheme("bearer")
+                                        .bearerFormat("JWT")
+                        )
+                );
     }
 
     private Info apiInfo(){
-        Info info = new Info();
-        info.setTitle("Personal-Finance-Tracker-API");
-        info.setDescription("API documentation for Tracking");
-        info.setContact(apiContactDetails());
-        info.setVersion("1.0.0");
-        info.setLicense(apiLicense());
-
-        return info;
+        return new Info()
+                .title("Personal-Finance-Tracker-API")
+                .description("API documentation for Tracking")
+                .version("1.0.0")
+                .contact(apiContactDetails())
+                .license(apiLicense());
     }
 
     private Contact apiContactDetails(){
-        Contact contact = new Contact();
-        contact.setName("Mohammad Hasibul Hasan");
-        contact.setEmail("hasibulx2026@gmail.com");
-
-        return contact;
+        return new Contact()
+                .name("Mohammad Hasibul Hasan")
+                .email("hasibulx26@gmail.com");
     }
 
     private License apiLicense(){
-        License license = new License();
-        license.setName("MIT License");
-        license.setUrl("https://opensource.org/licenses/MIT");
-
-        return license;
+        return new License()
+                .name("MIT License")
+                .url("https://opensource.org/licenses/MIT");
     }
 }

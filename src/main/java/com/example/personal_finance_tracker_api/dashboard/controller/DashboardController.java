@@ -5,6 +5,7 @@ import com.example.personal_finance_tracker_api.dashboard.dto.CategoryBreakdownD
 import com.example.personal_finance_tracker_api.dashboard.service.DashboardService;
 import com.example.personal_finance_tracker_api.transaction.dto.response.MonthlyReportDto;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequestMapping("api/v1/dashboard")
 @AllArgsConstructor
 @Tag(name = "Dashboard API", description = "APIs for dashboard analytics and reporting")
+@SecurityRequirement(name = "bearerAuth")
 public class DashboardController {
 
     private final DashboardService dashboardService;

@@ -2,6 +2,7 @@ package com.example.personal_finance_tracker_api.user.dto.request;
 
 import com.example.personal_finance_tracker_api.common.enums.Role;
 import jakarta.persistence.Column;
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Getter;
@@ -21,7 +22,8 @@ public class UserCreateRequestDto {
     @Column(name="username", unique = true, nullable = false)
     private String username;
     private String password;
+
+    @Email
     private String email;
     private Role role;
-
 }

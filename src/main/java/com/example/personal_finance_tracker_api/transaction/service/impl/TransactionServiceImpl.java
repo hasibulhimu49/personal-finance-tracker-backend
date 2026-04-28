@@ -4,7 +4,6 @@ import com.example.personal_finance_tracker_api.category.entity.Category;
 import com.example.personal_finance_tracker_api.category.repository.CategoryRepository;
 import com.example.personal_finance_tracker_api.common.enums.Type;
 import com.example.personal_finance_tracker_api.common.exception.ResourceNotFoundException;
-import com.example.personal_finance_tracker_api.common.util.SecurityUtils;
 import com.example.personal_finance_tracker_api.transaction.dto.request.TransactionRequestDto;
 import com.example.personal_finance_tracker_api.transaction.dto.response.MonthlyReportDto;
 import com.example.personal_finance_tracker_api.transaction.dto.response.TransactionResponseDto;
@@ -23,9 +22,13 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 
+import static com.example.personal_finance_tracker_api.common.util.SecurityUtils.getCurrentUser;
+
 @Service
 @AllArgsConstructor
 public class TransactionServiceImpl implements TransactionService {
+
+
 
     private final TransactionRepository repository;
     private final TransactionMapper mapper;
@@ -36,9 +39,11 @@ public class TransactionServiceImpl implements TransactionService {
                 .orElseThrow(() -> new ResourceNotFoundException("Category not found"));
     }
 
+
+
     //Create Transaction
     public TransactionResponseDto createTransaction(TransactionRequestDto requestDto) {
-        User currentUser = SecurityUtils.getCurrentUser();
+        User currentUser = getCurrentUser();
         Category category = getCategory(requestDto.getCategoryId(), currentUser.getId());
         
         Transaction transaction = mapper.toEntity(requestDto);
@@ -50,6 +55,9 @@ public class TransactionServiceImpl implements TransactionService {
         return mapper.toDto(saved);
     }
 
+
+
+
     //Get All Transaction
     public Page<TransactionResponseDto> getAllTransaction(LocalDate startDate, LocalDate endDate, Long categoryId, Type type, Pageable pageable) {
         User currentUser = getCurrentUser();
@@ -57,6 +65,10 @@ public class TransactionServiceImpl implements TransactionService {
         Page<Transaction> transactions = repository.findAll(spec, pageable);
         return transactions.map(mapper::toDto);
     }
+
+
+
+
 
     public String exportTransactionsToCsv(LocalDate startDate, LocalDate endDate, Long categoryId, Type type) {
         User currentUser = getCurrentUser();
@@ -76,6 +88,10 @@ public class TransactionServiceImpl implements TransactionService {
         return csv.toString();
     }
 
+
+
+
+
     //Get Transaction By ID
     public TransactionResponseDto getTransactionById(Long id) {
         User currentUser = getCurrentUser();
@@ -84,6 +100,9 @@ public class TransactionServiceImpl implements TransactionService {
         return mapper.toDto(t);
     }
 
+
+
+    //Update Transaction
     public TransactionResponseDto updateTransaction(Long id, TransactionRequestDto updateTrans) {
         User currentUser = getCurrentUser();
         Transaction t = repository.findByIdAndUserId(id, currentUser.getId())
@@ -106,6 +125,9 @@ public class TransactionServiceImpl implements TransactionService {
         return mapper.toDto(updated);
     }
 
+
+
+
     //Delete Transaction
     public Void deleteTransaction(Long id) {
         User currentUser = getCurrentUser();
@@ -114,6 +136,8 @@ public class TransactionServiceImpl implements TransactionService {
         repository.delete(t);
         return null;
     }
+
+
 
 
 
@@ -131,4 +155,8 @@ public class TransactionServiceImpl implements TransactionService {
 
         return new MonthlyReportDto(year + "-" + month, income, expense, balance);
     }
+
+
+
+
 }

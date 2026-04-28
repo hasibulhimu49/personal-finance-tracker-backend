@@ -6,6 +6,7 @@ import com.example.personal_finance_tracker_api.budget.dto.BudgetResponseDto;
 import com.example.personal_finance_tracker_api.budget.service.BudgetService;
 import com.example.personal_finance_tracker_api.common.response.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -18,6 +19,7 @@ import java.util.List;
 @RequestMapping("api/v1/budgets")
 @AllArgsConstructor
 @Tag(name = "Budget API", description = "APIs for creating and managing category budgets")
+@SecurityRequirement(name = "bearerAuth")
 public class BudgetController {
 
     private final BudgetService budgetService;
@@ -49,7 +51,7 @@ public class BudgetController {
         return ResponseEntity.ok(ApiResponse.success("Budget deleted", null));
     }
 
-    @Operation(summary = "Get budget limit versus actual spent")
+    @Operation(summary = "Get budget limit vs actual spent")
     @GetMapping("/vs-actual")
     public ResponseEntity<ApiResponse<List<BudgetActualDto>>> getBudgetVsActual(
             @RequestParam int month,

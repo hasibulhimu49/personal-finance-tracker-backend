@@ -54,7 +54,7 @@ public class SecurityConfig {
                         .requestMatchers("/actuator/health").permitAll()
                         .requestMatchers("/").permitAll()
 
-                        //Swagger and OpenAPI - exact paths only at start or end
+                        //Swagger and OpenAPI
                         .requestMatchers(
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
@@ -76,13 +76,29 @@ public class SecurityConfig {
 
                         //Best Practice ( j kno 1 jaigai likle e hbe controller a na likle controller clean thake)
                         // Transactions
-                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/**").hasAnyRole("USER","ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/api/v1/transactions").hasAnyRole("USER","ADMIN")
-                        .requestMatchers(HttpMethod.PUT, "/api/v1/transactions/**").hasAnyRole("USER","ADMIN")
-                        .requestMatchers(HttpMethod.DELETE, "/api/v1/transactions/**").hasAnyRole("USER","ADMIN")
-                        // Reports
-                        .requestMatchers(HttpMethod.GET, "/api/v1/reports/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/transactions").hasRole("USER")
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/transactions/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/transactions/**").hasRole("USER")
 
+                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/reports/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/transactions/export").hasRole("ADMIN")
+
+
+
+                        //Dashboard
+                        .requestMatchers(HttpMethod.GET, "/api/v1/dashboard/summary").hasRole("USER")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/dashboard/category-breakdown").hasRole("USER")
+
+                        //Category
+                        .requestMatchers(HttpMethod.GET, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/categories").hasAnyRole("USER","ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/categories/**").hasAnyRole("USER","ADMIN")
+
+                        //Budget
+                        .requestMatchers(HttpMethod.GET, "/api/v1/budgets/**").hasRole("USER")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/budgets").hasRole("USER")
 
 
 

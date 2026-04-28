@@ -49,7 +49,6 @@ public class UserServiceImpl implements UserService {
 
 
     //Get User by id
-
     public UserResponseDto getUserById(Long id)
     {
         User user=repository.findById(id).orElseThrow(()->new ResourceNotFoundException("Can't find any user for id: "+id));

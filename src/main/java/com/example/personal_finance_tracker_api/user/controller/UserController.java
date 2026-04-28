@@ -5,20 +5,22 @@ import com.example.personal_finance_tracker_api.user.dto.response.UserResponseDt
 import com.example.personal_finance_tracker_api.user.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/v1/users")
 @AllArgsConstructor
 @Tag(name = "User Management API", description = "APIs for managing users in the system")
+@SecurityRequirement(name = "bearerAuth")
 public class UserController {
+
 
     private final UserService service;
 
@@ -38,7 +40,8 @@ public class UserController {
 
 
 
-    //Get Users
+
+    //Get all Users
     @Operation(summary = "Get all users", description = "Retrieve a list of all registered users")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Successfully retrieved users"),
@@ -52,6 +55,7 @@ public class UserController {
 
 
 
+
     //Get Users
     @Operation(summary = "Get user by ID", description = "Retrieve a specific user by their unique ID")
     @ApiResponses(value = {
@@ -59,12 +63,10 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "User not found")
     })
     @GetMapping("/{id}")
-    public UserResponseDto getUserById(
-            @Parameter(description = "ID of the user to be retrieved", example = "1")
-            @PathVariable Long id
-    ) {
+    public UserResponseDto getUserById(@PathVariable Long id) {
         return service.getUserById(id);
     }
+
 
 
 
@@ -78,6 +80,7 @@ public class UserController {
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
         service.deleteUser(id);
-        return ResponseEntity.noContent().build(); // 204
+        return ResponseEntity.noContent().build();
     }
+
 }

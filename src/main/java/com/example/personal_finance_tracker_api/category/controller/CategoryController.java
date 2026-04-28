@@ -5,6 +5,7 @@ import com.example.personal_finance_tracker_api.category.dto.CategoryResponseDto
 import com.example.personal_finance_tracker_api.category.service.CategoryService;
 import com.example.personal_finance_tracker_api.common.response.ApiResponse;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
@@ -17,6 +18,7 @@ import java.util.List;
 @RequestMapping("api/v1/categories")
 @AllArgsConstructor
 @Tag(name = "Category API", description = "APIs for managing transaction categories")
+@SecurityRequirement(name = "bearerAuth")
 public class CategoryController {
 
     private final CategoryService service;

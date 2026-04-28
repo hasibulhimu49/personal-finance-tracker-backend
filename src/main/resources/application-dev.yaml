@@ -5,8 +5,8 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: postgres    #I know this is Hardcoded but This helps me test locally without setting up env vars every time it should like this ${DB_USERNAME}
-    password: admin1234    # ${DB_PASSWORD}
+    username: postgres
+    password: admin1234
     url: jdbc:postgresql://localhost:5432/personal-finance-db
 
   jpa:
@@ -37,8 +37,8 @@ logging:
 
 security:
   jwt:
-    secret-key: MY_SUPER_SECRET_KEY_123456789_123456789          # ${JWT_SECRET}
-    expiration: 3600000  # 24 hours
+    secret-key: MY_SUPER_SECRET_KEY_123456789_123456789
+    expiration: 3600000
 
 
 springdoc:

@@ -1,6 +1,8 @@
 # Personal Finance Tracker API (Backend)
 
-A secure, scalable, and production-ready RESTful API built with Spring Boot for managing personal finances, including income, expenses, and financial reports.
+A secure, scalable, and production-ready RESTful API built with Spring Boot to manage personal finances, including income, expenses, categorization, and financial insights.
+
+Designed with clean architecture principles, this system reflects real-world backend engineering practices such as JWT-based security, layered design, and maintainable code structure.
 
 ---
 
@@ -42,12 +44,13 @@ It follows clean architecture principles with a focus on scalability, maintainab
 
 ## ✨ Features
 
-- 🔐 JWT Authentication & Authorization  
-- 👤 User Registration & Login  
-- 💸 Income & Expense Management  
-- 🗂️ Category-based Transactions  
-- 📊 Monthly Financial Reports  
-- ✅ Input Validation & Global Exception Handling  
+- 🔐 JWT Authentication & Role-Based Authorization
+- 👤 User Registration & Login
+- 💸 Income & Expense Management (CRUD)
+- 🗂️ Category-Based Transactions
+- 📊 Monthly Financial Reports
+- 📁 CSV Export Support
+- ✅ Input Validation & Global Exception Handling 
 
 ---
 
@@ -84,7 +87,9 @@ Client → Controller → Service → Repository → Database
 
 ## 🗄️ ER Diagram (Initial Basic)
 
-![ER Diagram](./docs/diagrams/ER-FinanceTracker.drawio.png) 
+<p align="left">
+  <img src="./docs/diagrams/ER-FinanceTracker.drawio.png" width="550"/>
+</p>
 
 ---
 
@@ -118,7 +123,7 @@ This design ensures data integrity, scalability, and efficient querying for fina
 
 ## 🔗 API Endpoints
 
-### 🔐 Authentication API (`/api/v1/auth`)
+### 🔐 Authentication (/api/v1/auth)
 
 | Method | Endpoint | Description | Auth |
 |--------|----------|------------|------|
@@ -128,26 +133,28 @@ This design ensures data integrity, scalability, and efficient querying for fina
 
 ---
 
-### 👥 User Management (`/api/v1/users`)
+### 👥 Users (/api/v1/users)
 
-| Method | Endpoint | Description | Auth |
-|--------|----------|------------|------|
-| GET | / | Get all users (ADMIN) | ✅ |
-| POST | / | Create user (ADMIN) | ✅ |
-| GET | /{id} | Get user by ID | ✅ |
-| DELETE | /{id} | Delete user (ADMIN) | ✅ |
+| Method | Endpoint | Description           | Auth |
+| ------ | -------- | --------------------- | ---- |
+| GET    | /        | Get all users (ADMIN) | ✅    |
+| POST   | /        | Create user (ADMIN)   | ✅    |
+| GET    | /{id}    | Get user by ID        | ✅    |
+| DELETE | /{id}    | Delete user (ADMIN)   | ✅    |
+
 
 ---
 
-### 💰 Transactions (`/api/v1/transactions`)
+### 💰 Transactions (/api/v1/transactions)
 
-| Method | Endpoint | Description | Auth |
-|--------|----------|------------|------|
-| GET | / | Get all transactions | ✅ |
-| POST | / | Create transaction | ✅ |
-| GET | /{id} | Get transaction by ID | ✅ |
-| PUT | /{id} | Update transaction | ✅ |
-| DELETE | /{id} | Delete transaction | ✅ |
+| Method | Endpoint | Description           | Auth |
+| ------ | -------- | --------------------- | ---- |
+| GET    | /        | Get all transactions  | ✅    |
+| POST   | /        | Create transaction    | ✅    |
+| GET    | /{id}    | Get transaction by ID | ✅    |
+| PUT    | /{id}    | Update transaction    | ✅    |
+| DELETE | /{id}    | Delete transaction    | ✅    |
+
 
 ---
 

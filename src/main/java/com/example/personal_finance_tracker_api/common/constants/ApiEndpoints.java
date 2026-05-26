@@ -53,4 +53,17 @@ public class ApiEndpoints {
     public static class CartItem {
         public static final String BASE_CART_ITEMS = API_VERSION + "/cart/items";
     }*/
+
+
+
+
+
+// Hudai add korlam
+//        public static final String API_BASE = "/api/v1";
+//
+//        public static final String USERS = API_BASE + "/users";
+//        public static final String PRODUCTS = API_BASE + "/products";
+//        public static final String ORDERS = API_BASE + "/orders";
+
+
 }

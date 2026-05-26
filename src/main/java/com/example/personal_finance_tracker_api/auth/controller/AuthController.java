@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api/v1/auth")
 @AllArgsConstructor
-@Slf4j
 @Tag(name = "Authentication API", description = "APIs for user authentication (login, register, logout)")
 public class AuthController {
 

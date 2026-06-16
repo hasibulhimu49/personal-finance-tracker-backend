@@ -10,6 +10,7 @@ import lombok.Setter;
 @Setter
 public class RegisterRequest{
 
+    private String fullName;
     @NotNull(message = "Username cannot be null")
     @Pattern(regexp = "^[a-zA-Z0-9]{3,15}$",
             message = "Username must be 3–15 characters and contain only letters and numbers")

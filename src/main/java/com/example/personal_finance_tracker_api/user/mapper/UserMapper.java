@@ -11,18 +11,18 @@ public class UserMapper {
     public User toEntity(UserCreateRequestDto dto)
     {
         User user=new User();
+        user.setFullName(dto.getFullName());
         user.setUsername(dto.getUsername());
         user.setPassword(dto.getPassword());
         user.setEmail(dto.getEmail());
         user.setRole(dto.getRole());
         return user ;
-
     }
 
     public UserResponseDto toDto(User user)
     {
         UserResponseDto responseDto=new UserResponseDto();
-        responseDto.setId(user.getId());
+        responseDto.setFullName(user.getFullName());
         responseDto.setUsername(user.getUsername());
         responseDto.setEmail(user.getEmail());
         responseDto.setRole(user.getRole());

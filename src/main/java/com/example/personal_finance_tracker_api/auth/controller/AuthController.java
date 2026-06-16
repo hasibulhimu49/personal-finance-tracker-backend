@@ -26,7 +26,6 @@ public class AuthController {
     private final AuthService service;
 
 
-
     //Registration
     @Operation(
             summary = "Register a new user",

@@ -11,8 +11,7 @@ import lombok.Setter;
 @Setter
 public class UserResponseDto {
 
-    private Long id;
-
+    private String fullName;
     @NotNull(message = "Username Cannot be null")
     private String username;
 

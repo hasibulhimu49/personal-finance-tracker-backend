@@ -9,6 +9,7 @@ import com.example.personal_finance_tracker_api.user.mapper.UserMapper;
 import com.example.personal_finance_tracker_api.user.repository.UserRepository;
 import com.example.personal_finance_tracker_api.user.service.UserService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class UserServiceImpl implements UserService {
 
     public UserRepository repository;
     public UserMapper mapper;
+   // private PasswordEncoder passwordEncoder;
 
     //Constructor injection
     UserServiceImpl(UserRepository repository,UserMapper mapper)
@@ -31,9 +33,9 @@ public class UserServiceImpl implements UserService {
     public UserResponseDto createUser(UserCreateRequestDto dto)
     {
         User user=mapper.toEntity(dto);
-        user.setRole(Role.USER);
+//        user.setRole(Role.USER);
+       // user.setPassword(passwordEncoder.encode(dto.getPassword()));
         User saved=repository.save(user);
-        saved.getId();
 
         return mapper.toDto(saved);
     }

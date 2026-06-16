@@ -17,13 +17,16 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long id;
 
-    @Column(name="username")
+    @Column(name="fullname")
+    private String fullName;
+
+    @Column(name="username", unique = true)
     private String username;
 
     @Column(name="password")
     private String password;
 
-    @Column(name="email")
+    @Column(name="email", unique = true)
     private String email;
 
     @Column(name = "assigning_role")

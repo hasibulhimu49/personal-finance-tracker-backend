@@ -12,8 +12,7 @@ import lombok.Setter;
 @Setter
 public class UserCreateRequestDto {
 
-    private Long id;
-
+    private String fullName;
     @NotBlank(message = "Username cannot be empty")
     @Pattern(
             regexp = "^[a-zA-Z][a-zA-Z0-9]{2,19}$",
@@ -22,8 +21,8 @@ public class UserCreateRequestDto {
     @Column(name="username", unique = true, nullable = false)
     private String username;
     private String password;
-
     @Email
     private String email;
+
     private Role role;
 }
